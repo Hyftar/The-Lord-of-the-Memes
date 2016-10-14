@@ -1,5 +1,5 @@
 from player import Player
-from strings import *
+from strings import Str1
 
 
 Str1()
@@ -13,3 +13,5 @@ player = []
 for _ in range(int(player_number)):
     player.append(Player(input("Player %s name:\n" % ((_+1)))))
 print(player)
+for _ in player:
+    _.Pick()
