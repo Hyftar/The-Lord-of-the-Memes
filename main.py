@@ -15,5 +15,7 @@ for _ in range(int(player_number)):
     player.append(Player(input("Player %s name:\n" % ((_+1)))))
 # Pick player stats
 for _ in player:
-    print("Set attributes for player %s." % (_))
+    print("Set attributes for player %s." % (_.name))
     _.Pick()
+    print("Picking attribute done!")
+    

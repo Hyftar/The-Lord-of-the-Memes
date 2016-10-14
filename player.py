@@ -14,18 +14,25 @@ class Player(object):
         self.skill_points = 20
 
     def PrintPoints(self, initial=True, pick=False):
-        if initial == 0:
+        if initial is True:
             print("""
 Attributes to set:
-Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
+Strenght: %d, Constitution: %d, Defense: %d, Dexterity: %d, Intelligence: %d,
+Charisma: %d, Luck: %d.
 """)
-        if self.skill_points != 0:
+        if self.skill_points != 0 or pick is True:
             print("You have %s points to set." % (self.skill_points))
 
     def Pick(self):
         # Implement loop to catch error for each attribute
         self.PrintPoints()
         a = None
+        b = None
+        c = None
+        d = None
+        e = None
+        f = None
+        g = None
         while True:
             try:
                 self.strenght = int(self.strenght)
@@ -37,9 +44,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.strenght = int(input("Strenght:\n"))
+                self.strenght = input("Strenght:\n")
                 if a == 0:
-                    self.PrintPoints(pick=True)      
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.constitution = int(self.constitution)
@@ -51,9 +58,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.constitution = int(input("Constitution:\n"))
+                self.constitution = input("Constitution:\n")
                 if b == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.defense = int(self.defense)
@@ -65,9 +72,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.defense = int(input("Defense:\n"))
+                self.defense = input("Defense:\n")
                 if c == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.dexterity = int(self.dexterity)
@@ -79,9 +86,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.dexterity = int(input("Dexterity:\n"))
+                self.dexterity = input("Dexterity:\n")
                 if d == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.intelligence = int(self.intelligence)
@@ -93,9 +100,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.intelligence = int(input("Intelligence:\n"))
+                self.intelligence = input("Intelligence:\n")
                 if e == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.charisma = int(self.charisma)
@@ -107,9 +114,9 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.charisma = int(input("Charisma:\n"))
+                self.charisma = input("Charisma:\n")
                 if f == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
         while True:
             try:
                 self.luck = int(self.luck)
@@ -121,6 +128,6 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
                 self.PrintPoints(pick=True)
                 break
             except:
-                self.luck = int(input("Luck:\n"))
+                self.luck = input("Luck:\n")
                 if g == 0:
-                    self.PrintPoints(pick=True)
+                    self.PrintPoints(initial=False, pick=True)
