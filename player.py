@@ -4,17 +4,18 @@ class Player(object):
         self.health = 100
         self.inventory = []
         self.equipment = []
-        self.strength = 0
-        self.constitution = 0
-        self.defense = 0
-        self.dexterity = 0
-        self.intelligence = 0
-        self.charisma = 0
-        self.luck = 0
+        self.strength = None
+        self.constitution = None
+        self.defense = None
+        self.dexterity = None
+        self.intelligence = None
+        self.charisma = None
+        self.luck = None
         self.skill_points = 20
 
-    def PrintPoints(self):
-        print("""
+    def PrintPoints(self, initial=True, pick=False):
+        if initial == 0:
+            print("""
 Attributes to set:
 Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
 """)
@@ -23,80 +24,103 @@ Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
 
     def Pick(self):
         # Implement loop to catch error for each attribute
+        self.PrintPoints()
+        a = None
         while True:
             try:
                 self.strenght = int(self.strenght)
-                self.skill_points = self.skill_points - self.strenght
+                self.skill_points -= self.strenght
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.strenght
+                    a = 0
+                    1/a
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.strenght = int(input("Strenght:\n"))
+                if a == 0:
+                    self.PrintPoints(pick=True)      
         while True:
             try:
                 self.constitution = int(self.constitution)
-                self.skill_points = self.skill_points - self.constitution
+                self.skill_points -= self.constitution
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.constitution
+                    b = 0
+                    1/b
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.constitution = int(input("Constitution:\n"))
+                if b == 0:
+                    self.PrintPoints(pick=True)
         while True:
             try:
                 self.defense = int(self.defense)
-                self.skill_points = self.skill_points - self.defense
+                self.skill_points -= self.defense
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.defense
+                    c = 0
+                    1/c
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.defense = int(input("Defense:\n"))
+                if c == 0:
+                    self.PrintPoints(pick=True)
         while True:
             try:
                 self.dexterity = int(self.dexterity)
-                self.skill_points = self.skill_points - self.dexterity
+                self.skill_points -= self.dexterity
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.dexterity
+                    d = 0
+                    1/d
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.dexterity = int(input("Dexterity:\n"))
+                if d == 0:
+                    self.PrintPoints(pick=True)
         while True:
             try:
                 self.intelligence = int(self.intelligence)
-                self.skill_points = self.skill_points - self.intelligence
+                self.skill_points -= self.intelligence
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.intelligence
+                    e = 0
+                    1/e
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.intelligence = int(input("Intelligence:\n"))
+                if e == 0:
+                    self.PrintPoints(pick=True)
         while True:
             try:
                 self.charisma = int(self.charisma)
-                self.skill_points = self.skill_points - self.charisma
+                self.skill_points -= self.charisma
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.charisma
+                    f = 0
+                    1/f
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.charisma = int(input("Charisma:\n"))
+                if f == 0:
+                    self.PrintPoints(pick=True)
         while True:
             try:
                 self.luck = int(self.luck)
-                self.skill_points = self.skill_points - self.luck
+                self.skill_points -= self.luck
                 if self.skill_points < 0:
-                    self.skill_points = 0
-                    a = 1/self.skill_points
-                self.PrintPoints()
+                    self.skill_points += self.luck
+                    g = 0
+                    1/g
+                self.PrintPoints(pick=True)
                 break
             except:
                 self.luck = int(input("Luck:\n"))
+                if g == 0:
+                    self.PrintPoints(pick=True)
