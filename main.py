@@ -1,5 +1,5 @@
 from player import Player
-from strings import Str1
+from strings import *
 
 # Initiate Game
 print(Welcome())
