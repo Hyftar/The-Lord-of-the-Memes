@@ -2,7 +2,7 @@ from player import Player
 from strings import Str1
 
 # Initiate Game
-Str1()
+print(Welcome())
 player_number = None
 while True:
     try:
