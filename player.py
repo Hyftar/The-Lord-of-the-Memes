@@ -5,42 +5,43 @@ class Player(object):
         self.inventory = []
         self.equipment = []
         self.stats = [
-                    ['strength', None],
-                    ['constitution', None],
-                    ['defense', None],
-                    ['dexterity', None],
-                    ['intelligence', None],
-                    ['charisma', None],
-                    ['luck', None]
+                    ['strength', 0],
+                    ['constitution', 0],
+                    ['defense', 0],
+                    ['dexterity', 0],
+                    ['intelligence', 0],
+                    ['charisma', 0],
+                    ['luck', 0]
                     ]
         self.skill_points = 20
 
-    def PrintPoints(self, initial=True, pick=False):
-        if initial == 0:
+    def PrintPoints(self, initial=True):
+        if initial:
             print("""
 Attributes to set:
 Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
-""")
-        if self.skill_points != 0:
-            print("You have %s points to set." % (self.skill_points))
+You have %i points to assign
+""" % self.skill_points)
+        else:
+            print("You have %s points to assign." % (self.skill_points))
 
     def Pick(self):
         # Implement loop to catch error for each attribute
         self.PrintPoints()
 
-        for k, v in self.stats:
-            a = None
+        for i in range(len(self.stats)):
+            if self.skill_points == 0:
+                return
+
+            element = self.stats[i]
             while True:
                 try:
-                    v = int(v)
-                    self.skill_points -= self.strenght
+                    element[1] = int(input("%s:\n" % (element[0])))
+                    self.skill_points -= element[1]
                     if self.skill_points < 0:
-                        self.skill_points += self.strenght
-                        a = 0
-                        1/a
-                    self.PrintPoints(pick=True)
+                        self.skill_points += element[1]
+                        raise Exception('Exceeded skill points to assign')
+                    self.PrintPoints(False)
                     break
-                except:
-                    self.strenght = int(input("%s:\n" % (k)))
-                    if a == 0:
-                        self.PrintPoints(pick=True)
+                except Exception as error:
+                    print(error)
