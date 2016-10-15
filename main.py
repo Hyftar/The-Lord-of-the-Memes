@@ -20,8 +20,7 @@ for i in range(int(player_number)):
 # Pick player stats
 for player in players:
     print("Set attributes for player %s." % (player.name))
-    p = EasterEggs.NameEggs(player)
-    if p is True:
+    if EasterEggs.NameEggs(player):
         player.Pick()
     for stat in player.stats:
         print('%s: %i' % (stat[0].capitalize(), stat[1]))
