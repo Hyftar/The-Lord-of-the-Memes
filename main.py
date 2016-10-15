@@ -6,14 +6,18 @@ print(Welcome())
 player_number = None
 while True:
     try:
-        player_number = int(player_number)
+        player_number = int(input("How many players do you have?\n"))
         break
-    except:
-        player_number = input("How many players do you have?\n")
-player = []
-for _ in range(int(player_number)):
-    player.append(Player(input("Player %s name:\n" % ((_+1)))))
+    except Exception as error:
+        print(error)
+
+players = []
+for i in range(int(player_number)):
+    players.append(Player(input("Player %s name:\n" % ((i + 1)))))
+
 # Pick player stats
-for _ in player:
-    print("Set attributes for player %s." % (_))
-    _.Pick()
+for p in players:
+    print("Set attributes for player %s." % (p))
+    p.Pick()
+    for stat in p.stats:
+        print('%s: %i' % (stat[0], stat[1]))
