@@ -21,26 +21,24 @@ class Player(object):
 Attributes to set:
 Strenght, Constitution, Defense, Dexterity, Intelligence, Charisma, Luck.
 You have %i points to assign
-""" % self.skill_points)
+""" % (self.skill_points))
         else:
             print("You have %s points to assign." % (self.skill_points))
 
     def Pick(self):
         # Implement loop to catch error for each attribute
         self.PrintPoints()
-
         for i in range(len(self.stats)):
             if self.skill_points == 0:
                 return
-
             element = self.stats[i]
             while True:
                 try:
-                    element[1] = int(input("%s:\n" % (element[0])))
+                    element[1] = int(input("%s:\n" % (element[0].capitalize())))
                     self.skill_points -= element[1]
                     if self.skill_points < 0:
                         self.skill_points += element[1]
-                        raise Exception('Exceeded skill points to assign')
+                        raise Exception('Exceeded skill points to assign.')
                     self.PrintPoints(False)
                     break
                 except Exception as error:
