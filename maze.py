@@ -1,5 +1,3 @@
-# Code by Erik Sweet and Bill Basener
-
 import random
 import numpy as np
 from matplotlib import pyplot as plt
@@ -7,7 +5,9 @@ import matplotlib.cm as cm
 
 
 class Maze:
-    """Generates a maze."""
+    """Generates a maze. Each position contains 5 booleans,
+    the first 4 are if there's a wall on the left, top right and bottom and the
+    last coordinate is if the coordinate was visited during the search."""
     def __init__(self, rows, cols):
         self.num_rows = rows
         self.num_cols = cols
@@ -24,9 +24,9 @@ class Maze:
                 check.append('L')
             if r > 0 and self.Array[r - 1, c, 4] == 0:
                 check.append('U')
-            if c < self.num_cols-1 and self.Array[r, c + 1, 4] == 0:
+            if c < self.num_cols - 1 and self.Array[r, c + 1, 4] == 0:
                 check.append('R')
-            if r < self.num_rows-1 and self.Array[r + 1, c, 4] == 0:
+            if r < self.num_rows - 1 and self.Array[r + 1, c, 4] == 0:
                 check.append('D')
 
             if len(check):
@@ -34,7 +34,7 @@ class Maze:
                 move_direction = random.choice(check)
                 if move_direction == 'L':
                     self.Array[r, c, 0] = 1
-                    c = c-1
+                    c = c - 1
                     self.Array[r, c, 2] = 1
                 if move_direction == 'U':
                     self.Array[r, c, 1] = 1
@@ -48,12 +48,11 @@ class Maze:
                     self.Array[r, c, 3] = 1
                     r = r + 1
                     self.Array[r, c, 1] = 1
-            else:  # If there are no valid cells to move to.
-                # retrace one step back in history if no move is possible
+            else:
                 r, c = history.pop()
 
     def show_image(self):
-        image = np.zeros((self.num_rows*10, self.num_cols*10), dtype=np.uint8)
+        image = np.zeros((self.num_rows * 10, self.num_cols * 10), dtype=np.uint8)
         for row in range(0, self.num_rows):
             for col in range(0, self.num_cols):
                 cell_data = self.Array[row, col]
