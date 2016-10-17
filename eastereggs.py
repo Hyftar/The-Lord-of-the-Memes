@@ -7,7 +7,7 @@ class EasterEggs():
         if player.name == "God Trump Emperor":
             for stat in player.stats:
                 stat[1] = 100
-            print("Trump!\n"*100)
+            print("Trump!\n" * 100)
         elif player.name == "Pepe the frog":
             for stat in player.stats:
                 stat[1] = 1

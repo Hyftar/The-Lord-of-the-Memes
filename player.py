@@ -26,7 +26,6 @@ You have %i points to assign
             print("You have %s points to assign." % (self.skill_points))
 
     def Pick(self):
-        # Implement loop to catch error for each attribute
         self.PrintPoints()
         for i in range(len(self.stats)):
             if self.skill_points == 0:
