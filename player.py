@@ -5,14 +5,13 @@ class Player(object):
         self.inventory = []
         self.equipment = []
         self.stats = [
-                    ['strength', 0],
-                    ['constitution', 0],
-                    ['defense', 0],
-                    ['dexterity', 0],
-                    ['intelligence', 0],
-                    ['charisma', 0],
-                    ['luck', 0]
-                    ]
+            ['strength', 0],
+            ['constitution', 0],
+            ['defense', 0],
+            ['dexterity', 0],
+            ['intelligence', 0],
+            ['charisma', 0],
+            ['luck', 0]]
         self.skill_points = 20
 
     def PrintPoints(self, initial=True):
