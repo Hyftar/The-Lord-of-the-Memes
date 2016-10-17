@@ -11,8 +11,8 @@ class Maze:
     def __init__(self, rows, cols):
         self.num_rows = rows
         self.num_cols = cols
-        self.Array = np.zeros((self.num_rows, self.num_cols, 5), dtype=np.uint8)
-
+        self.Array = np.zeros((self.num_rows, self.num_cols, 5),
+                              dtype=np.uint8)
         r = 0
         c = 0
         history = [(r, c)]
@@ -52,20 +52,24 @@ class Maze:
                 r, c = history.pop()
 
     def show_image(self):
-        image = np.zeros((self.num_rows * 10, self.num_cols * 10), dtype=np.uint8)
+        image = np.zeros((self.num_rows * 10, self.num_cols * 10),
+                         dtype=np.uint8)
         for row in range(0, self.num_rows):
             for col in range(0, self.num_cols):
                 cell_data = self.Array[row, col]
                 for i in range(10 * row + 1, 10 * row + 9):
                     image[i, range(10 * col + 1, 10 * col + 9)] = 255
                     if cell_data[0] == 1:
-                        image[range(10 * row + 1, 10 * row + 9), 10 * col] = 255
+                        image[range(10 * row + 1, 10 * row + 9),
+                              10 * col] = 255
                     if cell_data[1] == 1:
-                        image[10 * row, range(10 * col + 1, 10 * col + 9)] = 255
+                        image[10 * row, range(10 * col + 1,
+                                              10 * col + 9)] = 255
                     if cell_data[2] == 1:
-                        image[range(10 * row + 1, 10 * row + 9), 10 * col + 9] = 255
+                        image[range(10 * row + 1, 10 * row + 9),
+                              10 * col + 9] = 255
                     if cell_data[3] == 1:
-                        image[10 * row + 9, range(10 * col + 1, 10 * col + 9)] = 255
-
+                        image[10 * row + 9, range(10 * col + 1,
+                                                  10 * col + 9)] = 255
         plt.imshow(image, cmap=cm.Greys_r, interpolation='none')
         plt.show()
