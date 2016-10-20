@@ -35,3 +35,4 @@ class EasterEggs():
                 print(textlist[n])
         else:
             return True
+        return False
