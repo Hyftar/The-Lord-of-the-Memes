@@ -86,6 +86,11 @@ class Maze:
         img = Image.fromarray(data, 'RGB')
         img.save('my.png')
 
+        # Reset visited states
+        for row in range(self.num_rows):
+            for col in range(self.num_cols):
+                self.Array[row, col][4] = 0
+
     def show_image(self):
         image = np.zeros((self.height * 10, self.width * 10),
                          dtype=np.uint8)
