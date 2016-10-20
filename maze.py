@@ -8,7 +8,7 @@ from PIL import Image
 
 class Maze:
     """Generates a maze. Each position contains 5 booleans,
-    the first 4 are if there's a wall on the left, top right and bottom and the
+    the first 4 are if there's a door on the left, top right and bottom and the
     last coordinate is if the coordinate was visited during the search."""
     def __init__(self, rows, cols):
         self.height = rows
