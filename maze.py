@@ -6,6 +6,16 @@ from noise import pnoise3
 from PIL import Image
 
 
+class Cell:
+    def __init__(self):
+        self.left = False
+        self.up = False
+        self.right = False
+        self.down = False
+        self.visited = False
+        self.content = ''
+
+
 class Maze:
     """Generates a maze. Each position contains 5 booleans,
     the first 4 are if there's a door on the left, top right and bottom and the
