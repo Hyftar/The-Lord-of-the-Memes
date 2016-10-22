@@ -38,13 +38,13 @@ class Maze:
         while history:
             self.cell(c, r).visited = 1
             check = []
-            if c > 0 and self.cell(c - 1, r).visited == 0:
+            if c > 0 and self.cell(c - 1, r).visited:
                 check.append('L')
-            if r > 0 and self.cell(c, r - 1).visited == 0:
+            if r > 0 and self.cell(c, r - 1).visited:
                 check.append('U')
-            if c < self.width - 1 and self.cell(c + 1, r).visited == 0:
+            if c < self.width - 1 and self.cell(c + 1, r).visited:
                 check.append('R')
-            if r < self.height - 1 and self.cell(c, r + 1).visited == 0:
+            if r < self.height - 1 and self.cell(c, r + 1).visited:
                 check.append('D')
 
             if len(check):
@@ -77,13 +77,8 @@ class Maze:
         self.cell(self.entrance_loc, 0).up = 1
         self.cell(self.exit_loc, self.height - 1).down = 1
 
-    @property
     def cell(self, x, y):
         return self.array[(x % self.width) + (y % self.height) * self.width]
-
-    @cell.setter
-    def cell(self, x, y, value):
-        self.array[(x % self.width) + (y % self.height) * self.width] = value
 
     # Currently only generates a png of the maze population
     # Each pixel represents a cell on the maze
@@ -118,21 +113,21 @@ class Maze:
     def show_image(self):
         image = np.zeros((self.height * 10, self.width * 10),
                          dtype=np.uint8)
-        for row in range(0, self.height):
-            for col in range(0, self.width):
+        for row in range(self.height):
+            for col in range(self.width):
                 cell_data = self.cell(col, row)
                 for i in range(10 * row + 1, 10 * row + 9):
                     image[i, range(10 * col + 1, 10 * col + 9)] = 255
-                    if cell_data[0] == 1:
+                    if cell_data.left:
                         image[range(10 * row + 1, 10 * row + 9),
                               10 * col] = 255
-                    if cell_data[1] == 1:
+                    if cell_data.up:
                         image[10 * row, range(10 * col + 1,
                                               10 * col + 9)] = 255
-                    if cell_data[2] == 1:
+                    if cell_data.right:
                         image[range(10 * row + 1, 10 * row + 9),
                               10 * col + 9] = 255
-                    if cell_data[3] == 1:
+                    if cell_data.down:
                         image[10 * row + 9, range(10 * col + 1,
                                                   10 * col + 9)] = 255
 
@@ -141,4 +136,4 @@ class Maze:
 
 maze = Maze(10, 10)
 maze.populate()
-print(maze.cell(5, 5))
+maze.show_image()
