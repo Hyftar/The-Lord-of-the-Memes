@@ -14,50 +14,50 @@ class Maze:
         self.height = rows
         self.width = cols
         self.seed = random.random()  # seed is needed to get random mazes
-        self.Array = np.zeros((self.height, self.width, 5),
+        self.array = np.zeros((self.height, self.width, 5),
                               dtype=np.uint8)
         r = 0
         c = 0
         history = [(r, c)]
 
         while history:
-            self.Array[r, c, 4] = 1
+            self.array[r, c, 4] = 1
             check = []
-            if c > 0 and self.Array[r, c - 1, 4] == 0:
+            if c > 0 and self.array[r, c - 1, 4] == 0:
                 check.append('L')
-            if r > 0 and self.Array[r - 1, c, 4] == 0:
+            if r > 0 and self.array[r - 1, c, 4] == 0:
                 check.append('U')
-            if c < self.width - 1 and self.Array[r, c + 1, 4] == 0:
+            if c < self.width - 1 and self.array[r, c + 1, 4] == 0:
                 check.append('R')
-            if r < self.height - 1 and self.Array[r + 1, c, 4] == 0:
+            if r < self.height - 1 and self.array[r + 1, c, 4] == 0:
                 check.append('D')
 
             if len(check):
                 history.append([r, c])
                 move_direction = random.choice(check)
                 if move_direction == 'L':
-                    self.Array[r, c, 0] = 1
+                    self.array[r, c, 0] = 1
                     c = c - 1
-                    self.Array[r, c, 2] = 1
+                    self.array[r, c, 2] = 1
                 if move_direction == 'U':
-                    self.Array[r, c, 1] = 1
+                    self.array[r, c, 1] = 1
                     r = r - 1
-                    self.Array[r, c, 3] = 1
+                    self.array[r, c, 3] = 1
                 if move_direction == 'R':
-                    self.Array[r, c, 2] = 1
+                    self.array[r, c, 2] = 1
                     c = c + 1
-                    self.Array[r, c, 0] = 1
+                    self.array[r, c, 0] = 1
                 if move_direction == 'D':
-                    self.Array[r, c, 3] = 1
+                    self.array[r, c, 3] = 1
                     r = r + 1
-                    self.Array[r, c, 1] = 1
+                    self.array[r, c, 1] = 1
             else:
                 r, c = history.pop()
 
         entrance_loc = random.randrange(self.width)
         exit_loc = random.randrange(self.width)
-        self.Array[0, entrance_loc][1] = 1
-        self.Array[self.height - 1, exit_loc][3] = 1
+        self.array[0, entrance_loc][1] = 1
+        self.array[self.height - 1, exit_loc][3] = 1
 
     # Currently only generates a png of the maze population
     # Each pixel represents a cell on the maze
@@ -96,7 +96,7 @@ class Maze:
                          dtype=np.uint8)
         for row in range(0, self.height):
             for col in range(0, self.width):
-                cell_data = self.Array[row, col]
+                cell_data = self.array[row, col]
                 for i in range(10 * row + 1, 10 * row + 9):
                     image[i, range(10 * col + 1, 10 * col + 9)] = 255
                     if cell_data[0] == 1:
